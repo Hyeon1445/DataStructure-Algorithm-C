@@ -14,7 +14,7 @@ void ListInit(List* plist) {
 }
 void LInsert(List* plist, int data) {
 	if ((plist->numofData) >= LIST_LEN) {
-		printf("ÀúÀå ºÒ°¡\n");
+		printf("ì €ì¥ ë¶ˆê°€\n");
 	}
 	else {
 		plist->arr[plist->numofData] = data;
@@ -95,7 +95,7 @@ int main() {
 	SetPointPos(ppos, 3, 2);
 	LInsert(&list, ppos);
 
-	printf("ÇöÀç µ¥ÀÌÅÍÀÇ ¼ö: %d\n", LCount(&list));
+	printf("í˜„ì¬ ë°ì´í„°ì˜ ìˆ˜: %d\n", LCount(&list));
 	if (LFirst(&list, &ppos)) {
 		ShowPointPos(ppos);
 		while (LNext(&list, &ppos))
@@ -108,7 +108,7 @@ int main() {
 	compPos.ypos = 0;
 
 	if (LFirst(&list, &ppos)) {
-		if (PointComp(ppos, &compPos) == 1) {//xpos°¡ 2ÀÏ °æ¿ì »èÁ¦
+		if (PointComp(ppos, &compPos) == 1) {//xposê°€ 2ì¼ ê²½ìš° ì‚­ì œ
 			ppos = LRemove(&list);
 			free(ppos);
 		}
@@ -120,7 +120,7 @@ int main() {
 		}
 	}
 
-	printf("ÇöÀç µ¥ÀÌÅÍ ¼ö: %d\n", LCount(&list));
+	printf("í˜„ì¬ ë°ì´í„° ìˆ˜: %d\n", LCount(&list));
 
 	if (LFirst(&list, &ppos)) {
 		ShowPointPos(ppos);
