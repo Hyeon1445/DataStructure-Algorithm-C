@@ -18,7 +18,7 @@ void ListInit(List* plist) {
 }
 void LInsert(List* plist, int data) {
 	if ((plist->numofData) >= LIST_LEN) {
-		printf("ÀúÀå ºÒ°¡\n");
+		printf("ì €ìž¥ ë¶ˆê°€\n");
 	}
 	else {
 		plist->arr[plist->numofData] = data;
@@ -65,23 +65,23 @@ typedef struct __namecard
 	char phone[PHONE_LEN];
 } NameCard;
 
-NameCard* MakeNameCard(char* name, char* phone)//NameCard ±¸Á¶Ã¼ º¯¼öÀÇ µ¿Àû ÇÒ´ç ¹× ÃÊ±âÈ­ ÈÄ ÁÖ¼Ò °ª ¹ÝÈ¯
+NameCard* MakeNameCard(char* name, char* phone)//NameCard êµ¬ì¡°ì²´ ë³€ìˆ˜ì˜ ë™ì  í• ë‹¹ ë° ì´ˆê¸°í™” í›„ ì£¼ì†Œ ê°’ ë°˜í™˜
 {
 	NameCard* nc = (NameCard*)malloc(sizeof(NameCard));
 	strcpy(nc->name, name);
 	strcpy(nc->phone, phone);
 	return nc;
 }
-void ShowNameCardInfo(NameCard* pcard)//NameCard ±¸Á¶Ã¼ º¯¼öÀÇ Á¤º¸ Ãâ·Â
+void ShowNameCardInfo(NameCard* pcard)//NameCard êµ¬ì¡°ì²´ ë³€ìˆ˜ì˜ ì •ë³´ ì¶œë ¥
 {
-	printf("ÀÌ¸§ : %s\n", pcard->name);
-	printf("¹øÈ£ : %s\n", pcard->phone);
+	printf("ì´ë¦„ : %s\n", pcard->name);
+	printf("ë²ˆí˜¸ : %s\n", pcard->phone);
 }
-int NameCompare(NameCard* pcard, char* name)//ÀÌ¸§ÀÌ °°À¸¸é 0, ´Ù¸£¸é 0ÀÌ ¾Æ´Ñ °ª ¹ÝÈ¯
+int NameCompare(NameCard* pcard, char* name)//ì´ë¦„ì´ ê°™ìœ¼ë©´ 0, ë‹¤ë¥´ë©´ 0ì´ ì•„ë‹Œ ê°’ ë°˜í™˜
 {
 	return strcmp(pcard->name, name);
 }
-void ChangePhoneNum(NameCard* pcard, char* phone)//ÀüÈ­¹øÈ£ Á¤º¸¸¦ º¯°æ
+void ChangePhoneNum(NameCard* pcard, char* phone)//ì „í™”ë²ˆí˜¸ ì •ë³´ë¥¼ ë³€ê²½
 {
 	strcpy(pcard->phone, phone);
 }
@@ -91,74 +91,74 @@ int main() {
 	ListInit(&list);
 	NameCard* nc;
 	int num,i,a;
-	printf("ÀÔ·ÂÇÒ »ç¶÷ ¼ö : ");
+	printf("ìž…ë ¥í•  ì‚¬ëžŒ ìˆ˜ : ");
 	scanf("%d", &num);
 	char name[20], phone[20];
 
 	for (i = 0; i < num; i++) {
-		printf("%d.ÀÌ¸§ : ",i+1);
+		printf("%d.ì´ë¦„ : ",i+1);
 		scanf("%s", name);
-		printf("%d.¹øÈ£ : ",i+1);
+		printf("%d.ë²ˆí˜¸ : ",i+1);
 		scanf("%s", phone);
 		nc = MakeNameCard(name, phone);
 		LInsert(&list, nc);
 	}
 	printf("\n");
-	printf("ÀÌ¸§(Á¤º¸Ãâ·Â) : ");
+	printf("ì´ë¦„(ì •ë³´ì¶œë ¥) : ");
 	scanf("%s", name);
 	
 	a = 1;
 	if (LFirst(&list, &nc)) {
 		if (NameCompare(nc, name) == 0) {
-			printf("1.ÀÌ¸§ : %s ¹øÈ£ : %s\n", nc->name, nc->phone);
+			printf("1.ì´ë¦„ : %s ë²ˆí˜¸ : %s\n", nc->name, nc->phone);
 		}
 		else {
 			while (LNext(&list, &nc)) {
 				a++;
 				if (NameCompare(nc, name) == 0) {
-					printf("%d.ÀÌ¸§ : %s ¹øÈ£ : %s\n", a, nc->name, nc->phone);
+					printf("%d.ì´ë¦„ : %s ë²ˆí˜¸ : %s\n", a, nc->name, nc->phone);
 					break;
 				}
 			}
 		}
 	}
 	if ((a == num)&&NameCompare(nc,name)!=0) {
-		printf("Å½»ö ½ÇÆÐ!¾ø´Â ÀÌ¸§\n");
+		printf("íƒìƒ‰ ì‹¤íŒ¨!ì—†ëŠ” ì´ë¦„\n");
 	}
-	//Æ¯Á¤ ÀÌ¸§À» ´ë»óÀ¸·Î Å½»ö ÁøÇà, Á¤º¸ Ãâ·Â
+	//íŠ¹ì • ì´ë¦„ì„ ëŒ€ìƒìœ¼ë¡œ íƒìƒ‰ ì§„í–‰, ì •ë³´ ì¶œë ¥
 
 
 	printf("\n\n");
-	printf("ÀÌ¸§(¹øÈ£º¯°æ) : ");
+	printf("ì´ë¦„(ë²ˆí˜¸ë³€ê²½) : ");
 	scanf("%s", name);
-	printf("¹øÈ£ÀÔ·Â : ");
+	printf("ë²ˆí˜¸ìž…ë ¥ : ");
 	scanf("%s", phone);
 
 	a = 1;
 	if (LFirst(&list, &nc)) {
 		if (NameCompare(nc, name) == 0) {
 			ChangePhoneNum(nc,phone);
-			printf("1.ÀÌ¸§ : %s º¯°æÈÄ¹øÈ£ : %s\n", nc->name, nc->phone);
+			printf("1.ì´ë¦„ : %s ë³€ê²½í›„ë²ˆí˜¸ : %s\n", nc->name, nc->phone);
 		}
 		else {
 			while (LNext(&list, &nc)) {
 				a++;
 				if (NameCompare(nc, name) == 0) {
 					ChangePhoneNum(nc, phone);
-					printf("%d.ÀÌ¸§ : %s º¯°æÈÄ¹øÈ£ : %s\n", a, nc->name, nc->phone);
+					printf("%d.ì´ë¦„ : %s ë³€ê²½í›„ë²ˆí˜¸ : %s\n", a, nc->name, nc->phone);
 					break;
 				}
 			}
 		}
 	}
 	if ((a == num) && NameCompare(nc, name) != 0) {
-		printf("Å½»ö ½ÇÆÐ!¾ø´Â ÀÌ¸§\n");
+		printf("íƒìƒ‰ ì‹¤íŒ¨!ì—†ëŠ” ì´ë¦„\n");
 	}
 	printf("\n\n");
-	//Æ¯Á¤ ÀÌ¸§À» ´ë»óÀ¸·Î Å½»ö ÁøÇà, ÀüÈ­¹øÈ£ Á¤º¸ º¯°æ
+	//íŠ¹ì • ì´ë¦„ì„ ëŒ€ìƒìœ¼ë¡œ íƒìƒ‰ ì§„í–‰, ì „í™”ë²ˆí˜¸ ì •ë³´ ë³€ê²½
 
 
-	printf("ÀÌ¸§(»èÁ¦) : ");
+	printf("ì´ë¦„(ì‚­ì œ) : ");
 	scanf("%s", name);
 
 	a = 1;
@@ -177,19 +177,19 @@ int main() {
 		}
 	}
 	if ((a == num) && NameCompare(nc, name) != 0) {
-		printf("Å½»ö ½ÇÆÐ!¾ø´Â ÀÌ¸§\n");
+		printf("íƒìƒ‰ ì‹¤íŒ¨!ì—†ëŠ” ì´ë¦„\n");
 	}
-	//Æ¯Á¤ ÀÌ¸§À» ´ë»óÀ¸·Î Å½»ö ÈÄ »èÁ¦
+	//íŠ¹ì • ì´ë¦„ì„ ëŒ€ìƒìœ¼ë¡œ íƒìƒ‰ í›„ ì‚­ì œ
 
 	printf("\n\n");
-	printf("ÀüÃ¼ Ãâ·Â\n");
+	printf("ì „ì²´ ì¶œë ¥\n");
 	
 	if (LFirst(&list, &nc)) {
-		printf("1.ÀÌ¸§ : %s ¹øÈ£ : %s\n", nc->name, nc->phone);
+		printf("1.ì´ë¦„ : %s ë²ˆí˜¸ : %s\n", nc->name, nc->phone);
 		while (LNext(&list, &nc)) {
-			printf("%d.ÀÌ¸§ : %s ¹øÈ£ : %s\n", a, nc->name, nc->phone);
+			printf("%d.ì´ë¦„ : %s ë²ˆí˜¸ : %s\n", a, nc->name, nc->phone);
 		}
 	}
-	//ÀüÃ¼ Ãâ·Â
+	//ì „ì²´ ì¶œë ¥
 	return 0;
 }
