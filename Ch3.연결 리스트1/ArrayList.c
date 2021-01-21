@@ -13,7 +13,7 @@ void ListInit(List* plist) {
 }
 void LInsert(List* plist, int data) {
 	if ((plist->numofData)>=LIST_LEN) {
-		printf("ÀúÀå ºÒ°¡\n");
+		printf("ì €ì¥ ë¶ˆê°€\n");
 	}
 	else {
 		plist->arr[plist->numofData] = data;
@@ -57,7 +57,7 @@ int main() {
 	List list;
 	int data, i, sum;
 	ListInit(&list);
-	//¸®½ºÆ® »ı¼º ¹× ÃÊ±âÈ­
+	//ë¦¬ìŠ¤íŠ¸ ìƒì„± ë° ì´ˆê¸°í™”
 
 	sum = 0;
 	for (i = 1; i <= 9; i++) {
@@ -69,8 +69,8 @@ int main() {
 	while (LNext(&list, &data)) {
 		sum += data;
 	}
-	printf("ÇÕ : %d\n", sum);
-	//¸®½º¿¡ ÀúÀåµÈ °ªÀ» ¼øÂ÷ÀûÀ¸·Î ÂüÁ¶ÇÏ¿© ÇÕÀ» °è»ê&Ãâ·Â
+	printf("í•© : %d\n", sum);
+	//ë¦¬ìŠ¤ì— ì €ì¥ëœ ê°’ì„ ìˆœì°¨ì ìœ¼ë¡œ ì°¸ì¡°í•˜ì—¬ í•©ì„ ê³„ì‚°&ì¶œë ¥
 
 	if (LFirst(&list, &data)) {
 		if (data % 2 == 0 || data % 3 == 0) {
@@ -82,16 +82,16 @@ int main() {
 			LRemove(&list);
 		}
 	}
-	//2ÀÇ¹è¼ö¿Í 3ÀÇ ¹è¼ö »èÁ¦
+	//2ì˜ë°°ìˆ˜ì™€ 3ì˜ ë°°ìˆ˜ ì‚­ì œ
 
-	printf("ÀúÀåµÈ ¼ıÀÚµé : ");
+	printf("ì €ì¥ëœ ìˆ«ìë“¤ : ");
 	if (LFirst(&list, &data)) {
 		printf("%5d", data);
 	}
 	while (LNext(&list, &data)) {
 		printf("%5d", data);
 	}
-	//¸®½ºÆ®¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ ¼ø¼­´ë·Î Ãâ·Â
+	//ë¦¬ìŠ¤íŠ¸ì— ì €ì¥ëœ ë°ì´í„° ìˆœì„œëŒ€ë¡œ ì¶œë ¥
 
 	return 0;
 }
